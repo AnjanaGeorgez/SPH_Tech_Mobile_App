@@ -85,6 +85,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5564FB2924E7E842008A11BE /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				55BF591E24E7C29900EE22E6 /* CardView.xib */,
+				55BF591C24E7C29300EE22E6 /* CardView.swift */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
+		5564FB2A24E7E855008A11BE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				55BF591A24E7BAE700EE22E6 /* Service.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		5564FB2B24E7E862008A11BE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				55BF58FC24E7B65F00EE22E6 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5564FB2C24E7E86F008A11BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55BF592024E7CF3D00EE22E6 /* DataUsage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		55BF58EC24E7B65F00EE22E6 = {
 			isa = PBXGroup;
 			children = (
@@ -108,17 +141,16 @@
 		55BF58F724E7B65F00EE22E6 /* SPH_Mobile_App */ = {
 			isa = PBXGroup;
 			children = (
+				5564FB2C24E7E86F008A11BE /* Model */,
+				5564FB2B24E7E862008A11BE /* ViewControllers */,
+				5564FB2A24E7E855008A11BE /* Networking */,
+				5564FB2924E7E842008A11BE /* CardView */,
 				55BF58F824E7B65F00EE22E6 /* AppDelegate.swift */,
 				55BF58FA24E7B65F00EE22E6 /* SceneDelegate.swift */,
-				55BF58FC24E7B65F00EE22E6 /* ViewController.swift */,
-				55BF591C24E7C29300EE22E6 /* CardView.swift */,
-				55BF591E24E7C29900EE22E6 /* CardView.xib */,
-				55BF591A24E7BAE700EE22E6 /* Service.swift */,
 				55BF58FE24E7B65F00EE22E6 /* Main.storyboard */,
 				55BF590124E7B66300EE22E6 /* Assets.xcassets */,
 				55BF590324E7B66300EE22E6 /* LaunchScreen.storyboard */,
 				55BF590624E7B66300EE22E6 /* Info.plist */,
-				55BF592024E7CF3D00EE22E6 /* DataUsage.swift */,
 			);
 			path = SPH_Mobile_App;
 			sourceTree = "<group>";

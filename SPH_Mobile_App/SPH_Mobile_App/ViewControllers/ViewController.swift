@@ -12,7 +12,6 @@ import Moya
 class ViewController: UIViewController, CardViewListDelegete {
     
     fileprivate var cardViewList: CardViewList!
-    fileprivate let cardIdentifier = "verticalCard"
     @IBOutlet weak var cardContainerWithView: UIView!
     
     
@@ -20,24 +19,41 @@ class ViewController: UIViewController, CardViewListDelegete {
         super.viewDidLoad()
         self.cardViewList = CardViewList()
         self.cardViewList.delegete = self
+        
+        self.getDataUsageInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.getDataUsageInfo()
-        
+    }
+    
+    func setUpCard(records: [Record]) {
         var cardViews = [UIView]()
-        for _ in 1 ... 25 {
-            let cardView = CardView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
-            cardViews.append(cardView)
+        var year = ""
+        var totalYearUsage: Float = 0.0
+        for record in records {
+            let recordYear = String(record.quarter.prefix(4))
+            if Int(recordYear)! > 2007 {
+                if year == "" || recordYear == year {
+                    year = recordYear
+                    totalYearUsage += Float(record.volume_of_mobile_data)!
+                }else {
+                    let cardView = CardView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+                    cardView.volumeLabel.text = "Yearly Usage : \(totalYearUsage) PB"
+                    cardView.yearLabel.text = year
+                    cardViews.append(cardView)
+                    year = recordYear
+                    totalYearUsage = Float(record.volume_of_mobile_data)!
+                }
+            }
         }
         self.cardViewList.animationScroll = .scaleBounce
         self.cardViewList.isClickable = true
         self.cardViewList.clickAnimation = .bounce
         self.cardViewList.cardSizeType = .autoSize
         self.cardViewList.grid = 1
-        self.cardViewList.generateCardViewList(containerView: cardContainerWithView, views: cardViews, listType: .vertical, identifier: "CardWithUIViews1")
+        self.cardViewList.generateCardViewList(containerView: self.cardContainerWithView, views: cardViews, listType: .vertical, identifier: "card")
     }
     
     func getDataUsageInfo() {
@@ -50,7 +66,9 @@ class ViewController: UIViewController, CardViewListDelegete {
                 if statusCode == 200 {
                     do {
                         let dataUsageInfo = try JSONDecoder().decode(DataUsage.self, from: data)
-                        print(dataUsageInfo.result!.records!)
+                        if let result = dataUsageInfo.result, let records = result.records {
+                            self.setUpCard(records : records)
+                        }
                     } catch let error {
                         print("\(error.localizedDescription)")
                     }
@@ -62,7 +80,7 @@ class ViewController: UIViewController, CardViewListDelegete {
                 // wasn't sent (connectivity), or no response was received (server
                 // timed out).  If the server responds with a 4xx or 5xx error, that
                 // will be sent as a ".success"-ful response.
-                print("Fail")
+                print("\(error.localizedDescription)")
             }
         }
     }

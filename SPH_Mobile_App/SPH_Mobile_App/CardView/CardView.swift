@@ -10,6 +10,9 @@ import UIKit
 
 class CardView: UIView {
     
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var volumeLabel: UILabel!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
