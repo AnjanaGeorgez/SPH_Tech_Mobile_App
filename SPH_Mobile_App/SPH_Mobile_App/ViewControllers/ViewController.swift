@@ -23,7 +23,7 @@ class ViewController: UIViewController, CardViewListDelegete {
         
         self.getDataUsageInfo()
     }
-        
+    
     func getDataUsageInfo() {
         let provider = MoyaProvider<Service>()
         provider.request(.getData) { result in
@@ -34,23 +34,40 @@ class ViewController: UIViewController, CardViewListDelegete {
                 if statusCode == 200 {
                     do {
                         let dataUsageInfo = try JSONDecoder().decode(DataUsage.self, from: data)
+                        
                         if let result = dataUsageInfo.result, let records = result.records {
                             self.setUpCard(records : records)
+                            self.saveData(records: records)
                         }
                     } catch let error {
-                        print("\(error.localizedDescription)")
+                        self.showAlert(title: "Error \(statusCode)", message: "Something went wrong while retrieving data online!\(error.localizedDescription) Data shown in this app is locally saved data.")
+                        self.showLocalData()
                     }
                 }else {
                     //If the server responds with a 4xx or 5xx error
-                    self.showAlert(title: "Error \(statusCode)", message: "Something went wrong!")
+                    self.showAlert(title: "Error \(statusCode)", message: "Something went wrong while retrieving data online!")
+                    self.showLocalData()
                 }
             case let .failure(error):
                 // this means there was a network failure - either the request
                 // wasn't sent (connectivity), or no response was received (server
                 // timed out).
-                self.showAlert(title: "Network Failure", message: error.localizedDescription)
+                self.showAlert(title: "Network Failure", message: "\(error.localizedDescription) Data shown in this app is locally saved data.")
+                self.showLocalData()
             }
         }
+    }
+    
+    func showLocalData(){
+        if let data = UserDefaults.standard.value(forKey:"dataUsageRecord") as? Data {
+            if let records = try? PropertyListDecoder().decode(Array<Record>.self, from: data) {
+                self.setUpCard(records : records)
+            }
+        }
+    }
+    
+    func saveData(records : [Record]) {
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(records), forKey:"dataUsageRecord")
     }
     
     func setUpCard(records: [Record]) {
@@ -108,7 +125,7 @@ class ViewController: UIViewController, CardViewListDelegete {
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     func cardView(_ scrollView: UIScrollView, didSelectCardView cardView: UIView, identifierCards identifier: String, index: Int) {
         if (dropInUsageMsg[index] != ""){
             self.showAlert(title: "Decrease in volume data", message: "\(dropInUsageMsg[index])")
