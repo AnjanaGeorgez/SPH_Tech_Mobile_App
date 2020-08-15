@@ -1,0 +1,16 @@
+PODS:
+  - CardViewList (1.1.8)
+
+DEPENDENCIES:
+  - CardViewList (~> 1.1.8)
+
+SPEC REPOS:
+  trunk:
+    - CardViewList
+
+SPEC CHECKSUMS:
+  CardViewList: d08614f3defc046e8200fb37e662c1a3f1255745
+
+PODFILE CHECKSUM: a70988028075003a24812701dc100273f7a0d27b
+
+COCOAPODS: 1.9.3
