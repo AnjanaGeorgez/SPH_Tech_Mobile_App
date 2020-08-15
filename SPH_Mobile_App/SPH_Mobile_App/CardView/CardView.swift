@@ -12,6 +12,7 @@ class CardView: UIView {
     
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var volumeLabel: UILabel!
+    @IBOutlet weak var dropImageView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

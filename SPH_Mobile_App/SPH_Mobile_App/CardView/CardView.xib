@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="SPH_Mobile_App" customModuleProvider="target">
             <connections>
+                <outlet property="dropImageView" destination="TpV-E6-c0Y" id="nTn-lF-v73"/>
                 <outlet property="volumeLabel" destination="6p2-oJ-Qtf" id="U2d-dY-GTM"/>
                 <outlet property="yearLabel" destination="6lr-cq-32X" id="bjT-TT-aZ1"/>
             </connections>
@@ -22,17 +23,20 @@
                     <rect key="frame" x="10" y="10" width="130" height="130"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lr-cq-32X">
-                            <rect key="frame" x="41.5" y="0.0" width="47.5" height="65"/>
+                            <rect key="frame" x="41.5" y="0.0" width="47.5" height="43.5"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6p2-oJ-Qtf">
-                            <rect key="frame" x="44" y="65" width="42" height="65"/>
+                            <rect key="frame" x="44" y="43.5" width="42" height="43"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_drop" translatesAutoresizingMaskIntoConstraints="NO" id="TpV-E6-c0Y">
+                            <rect key="frame" x="53" y="86.5" width="24" height="43.5"/>
+                        </imageView>
                     </subviews>
                 </stackView>
             </subviews>
@@ -48,4 +52,7 @@
             <point key="canvasLocation" x="-65" y="-158"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_drop" width="24" height="24"/>
+    </resources>
 </document>

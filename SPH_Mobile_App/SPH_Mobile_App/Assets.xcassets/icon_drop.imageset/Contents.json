@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "icaksama.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icaksama-1.jpg",
+      "filename" : "icon_drop.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icaksama-2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

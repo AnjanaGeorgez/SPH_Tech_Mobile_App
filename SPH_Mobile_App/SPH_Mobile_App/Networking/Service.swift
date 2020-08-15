@@ -38,7 +38,7 @@ extension Service: TargetType {
     var sampleData: Data {
         switch self {
         case .getData:
-            return "Half measures are as bad as nothing at all.".utf8Encoded
+            return "Get Network Data".utf8Encoded
         }
     }
     

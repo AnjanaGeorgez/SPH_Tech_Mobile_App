@@ -14,6 +14,7 @@ class ViewController: UIViewController, CardViewListDelegete {
     fileprivate var cardViewList: CardViewList!
     @IBOutlet weak var cardContainerWithView: UIView!
     
+    var dropInUsageMsg: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,40 +23,7 @@ class ViewController: UIViewController, CardViewListDelegete {
         
         self.getDataUsageInfo()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-    }
-    
-    func setUpCard(records: [Record]) {
-        var cardViews = [UIView]()
-        var year = ""
-        var totalYearUsage: Float = 0.0
-        for record in records {
-            let recordYear = String(record.quarter.prefix(4))
-            if Int(recordYear)! > 2007 {
-                if year == "" || recordYear == year {
-                    year = recordYear
-                    totalYearUsage += Float(record.volume_of_mobile_data)!
-                }else {
-                    let cardView = CardView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
-                    cardView.volumeLabel.text = "Yearly Usage : \(totalYearUsage) PB"
-                    cardView.yearLabel.text = year
-                    cardViews.append(cardView)
-                    year = recordYear
-                    totalYearUsage = Float(record.volume_of_mobile_data)!
-                }
-            }
-        }
-        self.cardViewList.animationScroll = .scaleBounce
-        self.cardViewList.isClickable = true
-        self.cardViewList.clickAnimation = .bounce
-        self.cardViewList.cardSizeType = .autoSize
-        self.cardViewList.grid = 1
-        self.cardViewList.generateCardViewList(containerView: self.cardContainerWithView, views: cardViews, listType: .vertical, identifier: "card")
-    }
-    
     func getDataUsageInfo() {
         let provider = MoyaProvider<Service>()
         provider.request(.getData) { result in
@@ -73,47 +41,78 @@ class ViewController: UIViewController, CardViewListDelegete {
                         print("\(error.localizedDescription)")
                     }
                 }else {
-                    
+                    //If the server responds with a 4xx or 5xx error
+                    self.showAlert(title: "Error \(statusCode)", message: "Something went wrong!")
                 }
             case let .failure(error):
                 // this means there was a network failure - either the request
                 // wasn't sent (connectivity), or no response was received (server
-                // timed out).  If the server responds with a 4xx or 5xx error, that
-                // will be sent as a ".success"-ful response.
-                print("\(error.localizedDescription)")
+                // timed out).
+                self.showAlert(title: "Network Failure", message: error.localizedDescription)
             }
         }
     }
     
-    func cardView(willDisplay scrollView: UIScrollView, identifierCards identifier: String) {
+    func setUpCard(records: [Record]) {
+        var cardViews = [UIView]()
+        var year = ""
+        var totalYearUsage: Float = 0.0
+        var yearUsageArr: [Float] = []
+        for record in records {
+            let recordYear = String(record.quarter.prefix(4))
+            if Int(recordYear)! > 2007 {
+                if year == "" || recordYear == year {
+                    //If quarter in same year add  to totalYearUsage
+                    year = recordYear
+                    if let dataUsage = Float(record.volume_of_mobile_data) {
+                        totalYearUsage += dataUsage
+                        yearUsageArr.append(dataUsage)
+                    }
+                }else {
+                    let cardView = CardView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+                    cardView.volumeLabel.text = "Yearly Usage : \(totalYearUsage) PB"
+                    cardView.yearLabel.text = year
+                    
+                    //setup clickable image in the entry if any quarter in a year demonstrates a decrease in volume data.
+                    if let minValue = yearUsageArr.min() {
+                        if (yearUsageArr.firstIndex(of: minValue) != 0){
+                            cardView.dropImageView.isHidden = false
+                            dropInUsageMsg.append("There is a drop in usage (\(minValue)) PB in \(year) quarter \(yearUsageArr.firstIndex(of: minValue)! + 1)")
+                        }else {
+                            cardView.dropImageView.isHidden = true
+                            dropInUsageMsg.append("")
+                        }
+                    }
+                    cardViews.append(cardView)
+                    
+                    //If quarter in new year
+                    year = recordYear
+                    if let dataUsage = Float(record.volume_of_mobile_data) {
+                        totalYearUsage = dataUsage
+                        yearUsageArr = [dataUsage]
+                    }
+                    
+                }
+            }
+        }
+        self.cardViewList.animationScroll = .scaleBounce
+        self.cardViewList.isClickable = true
+        self.cardViewList.clickAnimation = .bounce
+        self.cardViewList.cardSizeType = .autoSize
+        self.cardViewList.grid = 1
+        self.cardViewList.generateCardViewList(containerView: self.cardContainerWithView, views: cardViews, listType: .vertical, identifier: "card")
     }
     
-    // You can control CardView from here
-    func cardView(_ scrollView: UIScrollView, willAttachCardView cardView: UIView, identifierCards identifier: String, index: Int) {
-        //print(cardView.frame)
+    func showAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
-    
-    func cardView(_ scrollView: UIScrollView, willAttachCardViewController cardViewController: UIViewController, identifierCards identifier: String, index: Int) {
-    }
-    
-    func cardView(_ scrollView: UIScrollView, didFinishDisplayCardViews cardViews: [UIView], identifierCards identifier: String) {
-        //print(cardViews.count)
-    }
-    
-    func cardView(_ scrollView: UIScrollView, didFinishDisplayCardViewControllers cardViewsController: [UIViewController], identifierCards identifier: String) {
-    }
-    
+
     func cardView(_ scrollView: UIScrollView, didSelectCardView cardView: UIView, identifierCards identifier: String, index: Int) {
-        //        if identifier == horizontalCardIdentifier {
-        //            print("Horizontal card view finish display!")
-        //        }
+        if (dropInUsageMsg[index] != ""){
+            self.showAlert(title: "Decrease in volume data", message: "\(dropInUsageMsg[index])")
+        }
     }
     
-    func cardView(_ scrollView: UIScrollView, didSelectCardViewController cardViewController: UIViewController, identifierCards identifier: String, index: Int) {
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
