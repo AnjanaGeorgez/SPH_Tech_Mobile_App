@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5564FB3024E81712008A11BE /* mockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 5564FB2F24E81712008A11BE /* mockData.json */; };
 		55BF58F924E7B65F00EE22E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF58F824E7B65F00EE22E6 /* AppDelegate.swift */; };
 		55BF58FB24E7B65F00EE22E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF58FA24E7B65F00EE22E6 /* SceneDelegate.swift */; };
 		55BF58FD24E7B65F00EE22E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF58FC24E7B65F00EE22E6 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 		0285C5FEEDF230AC1D48E999 /* Pods-SPH_Mobile_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPH_Mobile_App.debug.xcconfig"; path = "Target Support Files/Pods-SPH_Mobile_App/Pods-SPH_Mobile_App.debug.xcconfig"; sourceTree = "<group>"; };
 		387D6B98492BF77CC1E7B8EB /* Pods_SPH_Mobile_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPH_Mobile_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B6B8EBED5BF28F685FB4E3 /* Pods_SPH_Mobile_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPH_Mobile_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5564FB2F24E81712008A11BE /* mockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockData.json; sourceTree = "<group>"; };
 		55BF58F524E7B65F00EE22E6 /* SPH_Mobile_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPH_Mobile_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BF58F824E7B65F00EE22E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55BF58FA24E7B65F00EE22E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				55BF591A24E7BAE700EE22E6 /* Service.swift */,
+				5564FB2F24E81712008A11BE /* mockData.json */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5564FB3024E81712008A11BE /* mockData.json in Resources */,
 				55BF590524E7B66300EE22E6 /* LaunchScreen.storyboard in Resources */,
 				55BF590224E7B66300EE22E6 /* Assets.xcassets in Resources */,
 				55BF591F24E7C29900EE22E6 /* CardView.xib in Resources */,

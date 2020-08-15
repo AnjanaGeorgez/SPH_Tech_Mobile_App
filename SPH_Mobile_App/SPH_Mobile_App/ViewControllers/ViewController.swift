@@ -58,7 +58,7 @@ class ViewController: UIViewController, CardViewListDelegete {
         }
     }
     
-    func showLocalData(){
+    func showLocalData() {
         if let data = UserDefaults.standard.value(forKey:"dataUsageRecord") as? Data {
             if let records = try? PropertyListDecoder().decode(Array<Record>.self, from: data) {
                 self.setUpCard(records : records)

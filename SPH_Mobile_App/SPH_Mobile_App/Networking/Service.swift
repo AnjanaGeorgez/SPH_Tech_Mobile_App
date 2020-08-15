@@ -38,7 +38,12 @@ extension Service: TargetType {
     var sampleData: Data {
         switch self {
         case .getData:
-            return "Get Network Data".utf8Encoded
+            // Provided you have a file named mockData.json 
+            guard let url = Bundle.main.url(forResource: "mockData", withExtension: "json"),
+                let data = try? Data(contentsOf: url) else {
+                    return Data()
+            }
+            return data
         }
     }
     
