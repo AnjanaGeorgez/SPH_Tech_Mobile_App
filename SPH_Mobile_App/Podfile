@@ -7,6 +7,7 @@ target 'SPH_Mobile_App' do
 
   # Pods for SPH_Mobile_App
   pod 'CardViewList', '~> 1.1.8'
+  pod 'Moya'
 
 
   target 'SPH_Mobile_AppTests' do

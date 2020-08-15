@@ -1,2 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-SPH_Mobile_App/Pods-SPH_Mobile_App-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/CardViewList/CardViewList.framework
+${BUILT_PRODUCTS_DIR}/Moya/Moya.framework

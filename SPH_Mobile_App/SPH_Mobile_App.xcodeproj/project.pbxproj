@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,10 @@
 		55BF590224E7B66300EE22E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BF590124E7B66300EE22E6 /* Assets.xcassets */; };
 		55BF590524E7B66300EE22E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55BF590324E7B66300EE22E6 /* LaunchScreen.storyboard */; };
 		55BF591024E7B66400EE22E6 /* SPH_Mobile_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF590F24E7B66400EE22E6 /* SPH_Mobile_AppTests.swift */; };
+		55BF591B24E7BAE700EE22E6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF591A24E7BAE700EE22E6 /* Service.swift */; };
+		55BF591D24E7C29300EE22E6 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF591C24E7C29300EE22E6 /* CardView.swift */; };
+		55BF591F24E7C29900EE22E6 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BF591E24E7C29900EE22E6 /* CardView.xib */; };
+		55BF592124E7CF3D00EE22E6 /* DataUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF592024E7CF3D00EE22E6 /* DataUsage.swift */; };
 		7BDD2BBF4D2F432DEDAB7943 /* Pods_SPH_Mobile_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B6B8EBED5BF28F685FB4E3 /* Pods_SPH_Mobile_App.framework */; };
 		A7E6C549F6E3C895C94C2C03 /* Pods_SPH_Mobile_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387D6B98492BF77CC1E7B8EB /* Pods_SPH_Mobile_AppTests.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +47,10 @@
 		55BF590B24E7B66400EE22E6 /* SPH_Mobile_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPH_Mobile_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BF590F24E7B66400EE22E6 /* SPH_Mobile_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPH_Mobile_AppTests.swift; sourceTree = "<group>"; };
 		55BF591124E7B66400EE22E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55BF591A24E7BAE700EE22E6 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		55BF591C24E7C29300EE22E6 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		55BF591E24E7C29900EE22E6 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		55BF592024E7CF3D00EE22E6 /* DataUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUsage.swift; sourceTree = "<group>"; };
 		70CC48B8B8F700961D2A9780 /* Pods-SPH_Mobile_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPH_Mobile_App.release.xcconfig"; path = "Target Support Files/Pods-SPH_Mobile_App/Pods-SPH_Mobile_App.release.xcconfig"; sourceTree = "<group>"; };
 		CC541F26363B3902ACFABB35 /* Pods-SPH_Mobile_AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPH_Mobile_AppTests.release.xcconfig"; path = "Target Support Files/Pods-SPH_Mobile_AppTests/Pods-SPH_Mobile_AppTests.release.xcconfig"; sourceTree = "<group>"; };
 		DB8C3F06E5A72322E0149D11 /* Pods-SPH_Mobile_AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPH_Mobile_AppTests.debug.xcconfig"; path = "Target Support Files/Pods-SPH_Mobile_AppTests/Pods-SPH_Mobile_AppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -103,10 +111,14 @@
 				55BF58F824E7B65F00EE22E6 /* AppDelegate.swift */,
 				55BF58FA24E7B65F00EE22E6 /* SceneDelegate.swift */,
 				55BF58FC24E7B65F00EE22E6 /* ViewController.swift */,
+				55BF591C24E7C29300EE22E6 /* CardView.swift */,
+				55BF591E24E7C29900EE22E6 /* CardView.xib */,
+				55BF591A24E7BAE700EE22E6 /* Service.swift */,
 				55BF58FE24E7B65F00EE22E6 /* Main.storyboard */,
 				55BF590124E7B66300EE22E6 /* Assets.xcassets */,
 				55BF590324E7B66300EE22E6 /* LaunchScreen.storyboard */,
 				55BF590624E7B66300EE22E6 /* Info.plist */,
+				55BF592024E7CF3D00EE22E6 /* DataUsage.swift */,
 			);
 			path = SPH_Mobile_App;
 			sourceTree = "<group>";
@@ -128,7 +140,6 @@
 				DB8C3F06E5A72322E0149D11 /* Pods-SPH_Mobile_AppTests.debug.xcconfig */,
 				CC541F26363B3902ACFABB35 /* Pods-SPH_Mobile_AppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -218,6 +229,7 @@
 			files = (
 				55BF590524E7B66300EE22E6 /* LaunchScreen.storyboard in Resources */,
 				55BF590224E7B66300EE22E6 /* Assets.xcassets in Resources */,
+				55BF591F24E7C29900EE22E6 /* CardView.xib in Resources */,
 				55BF590024E7B65F00EE22E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,8 +313,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				55BF58FD24E7B65F00EE22E6 /* ViewController.swift in Sources */,
+				55BF591B24E7BAE700EE22E6 /* Service.swift in Sources */,
 				55BF58F924E7B65F00EE22E6 /* AppDelegate.swift in Sources */,
 				55BF58FB24E7B65F00EE22E6 /* SceneDelegate.swift in Sources */,
+				55BF591D24E7C29300EE22E6 /* CardView.swift in Sources */,
+				55BF592124E7CF3D00EE22E6 /* DataUsage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
